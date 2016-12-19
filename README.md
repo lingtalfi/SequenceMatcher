@@ -1,6 +1,6 @@
 SequenceMatcher
 =========================
-2016-12-15
+2016-12-15 -- 2015-12-19
 
 
 Find/replace a pattern in a sequence of things.
@@ -119,6 +119,116 @@ Good luck.
 
 
 
+Where do I found some example code?
+----------------------------------
+
+I made this code for the only purpose of being able to extract the
+translation information out of files.
+
+I could have used regex, but I remembered having a bad experience (a long time ago)
+trying to cope with both the double quote OR the single quote escaping that
+can occur in my case, something like the example below:
+
+```php
+<?php
+
+echo __("This is an example of string I want to extract", "optionalContext");
+echo __("This is an example of string I want to extract");
+echo __("This is an {example} of string I want to extract", null, [
+    'example' => $something,
+]);
+```
+
+So in a way, I found the approach of parsing tokens more elegant,
+although in the end I'm not a big fan of my implementation, as I said earlier.
+
+But anyway, this example is used in the [nullos admin](https://github.com/lingtalfi/nullos-admin)'s Linguist module.
+
+Here is the code that extracts those translations, for your convenience:
+
+```php
+
+// app-nullos/class-modules/Linguist/Util/LinguistScanner.php
+
+public static function scanTranslationsByFile($file)
+{
+
+    $ret = [];
+
+    $tokens = token_get_all(file_get_contents($file));
+
+    $model = Model::create()
+        ->addElement(TokenEntity::create(T_STRING, '__'))
+        ->addElement(TokenEntity::create(T_WHITESPACE, null), '?')
+        ->addElement(TokenEntity::create(null, '('))
+        ->addElement(TokenEntity::create(T_WHITESPACE, null), '?')
+        ->addElement(TokenEntity::create(T_CONSTANT_ENCAPSED_STRING, null), null, 'id')
+        ->addElement(TokenEntity::create(T_WHITESPACE, null), '?')
+        ->addElement(Group::create(null)
+                ->addElement(TokenEntity::create(null, ','))
+                ->addElement(TokenEntity::create(T_WHITESPACE, null), '?')
+                ->addElement(TokenEntity::create(T_CONSTANT_ENCAPSED_STRING, null), null, 'context')
+                ->addElement(TokenEntity::create(T_WHITESPACE, null), '?')
+            , '?'
+        )
+        ->addElement(TokenGreedyEntity::create(null, ')'), '*')
+        ->addElement(TokenEntity::create(null, ')'));
+
+    $sequence = $tokens;
+
+    $markers = [];
+    SequenceMatcher::create()
+        ->match($sequence, $model, function (array $matchedElements, array $matchedThings, array $_markers = null) use (&$markers) {
+            $markers[] = TokensSequenceMatcherUtil::detokenizeMarkers($_markers);
+        });
+
+    foreach ($markers as $info) {
+        $arr = [
+            'id' => array_shift($info['id']),
+        ];
+        if (array_key_exists('context', $info)) {
+            $arr['context'] = array_shift($info['context']);
+        }
+        $ret[] = $arr;
+    }
+    return $ret;
+}
+
+```
+
+Note that the code above uses an intermediary TokenEntity wrapper,
+which basically allows matching tokens.
+
+The SequenceMatcher code is totally abstract and can match any object,
+and the TokenEntity is just an example of specialization of that EntityInterface.
+
+
+The TokenEntity itself is found in the [Tokens](https://github.com/lingtalfi/Tokens) library.
+
+I also created a very useful TokenGreedyEntity, which basically matches
+any token EXCEPT the one given.
+
+
+
+Replace things
+==================
+
+This is not implemented yet, because I didn't need that functionality at the time I wrote this tool,
+and I was in a hurry.
+
+Still, the intent of this planet is to provide the replace functionality, maybe some day?
+
+
+
+
+
+
+History Log
+------------------
+
+- 1.0.0 -- 2016-12-19
+
+    - initial commit
 
 
 
