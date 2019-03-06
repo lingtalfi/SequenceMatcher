@@ -14,7 +14,7 @@ Install
 ==========
 Using the [uni](https://github.com/lingtalfi/universe-naive-importer) command.
 ```bash
-uni import SequenceMatcher
+uni import Ling/SequenceMatcher
 ```
 
 Sometimes, you have a sequence of things and you need to find a pattern of those things in the sequence.
@@ -234,12 +234,12 @@ thing that is iterated.
 <?php
 
 
-use SequenceMatcher\Model;
+use Ling\SequenceMatcher\Model;
 use \SequenceMatcher\SequenceMatcher;
-use Tokens\SequenceMatcher\Element\TokenAlternateEntity;
-use Tokens\SequenceMatcher\Element\TokenEntity as TokenEntity;
-use Tokens\SequenceMatcher\Element\TokenGreedyEntity;
-use Tokens\Tokens;
+use Ling\Tokens\SequenceMatcher\Element\TokenAlternateEntity;
+use Ling\Tokens\SequenceMatcher\Element\TokenEntity as TokenEntity;
+use Ling\Tokens\SequenceMatcher\Element\TokenGreedyEntity;
+use Ling\Tokens\Tokens;
 
 require_once "bigbang.php";
 

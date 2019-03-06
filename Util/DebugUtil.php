@@ -1,13 +1,13 @@
 <?php
 
 
-namespace SequenceMatcher\Util;
+namespace Ling\SequenceMatcher\Util;
 
 
-use SequenceMatcher\Element\AlternateGroupInterface;
-use SequenceMatcher\Element\EntityInterface;
-use SequenceMatcher\Element\GroupInterface;
-use SequenceMatcher\Model;
+use Ling\SequenceMatcher\Element\AlternateGroupInterface;
+use Ling\SequenceMatcher\Element\EntityInterface;
+use Ling\SequenceMatcher\Element\GroupInterface;
+use Ling\SequenceMatcher\Model;
 
 class DebugUtil
 {

@@ -1,11 +1,11 @@
 <?php
 
-use SequenceMatcher\Element\AlternateGroup;
-use SequenceMatcher\Element\CharEntity;
-use SequenceMatcher\Element\Group;
-use SequenceMatcher\Model;
-use SequenceMatcher\SequenceMatcher;
-use SequenceMatcher\Util\DebugUtil;
+use Ling\SequenceMatcher\Element\AlternateGroup;
+use Ling\SequenceMatcher\Element\CharEntity;
+use Ling\SequenceMatcher\Element\Group;
+use Ling\SequenceMatcher\Model;
+use Ling\SequenceMatcher\SequenceMatcher;
+use Ling\SequenceMatcher\Util\DebugUtil;
 
 
 require_once __DIR__ . "/../init.php";

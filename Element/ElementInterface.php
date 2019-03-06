@@ -2,7 +2,7 @@
 
 
 
-namespace SequenceMatcher\Element;
+namespace Ling\SequenceMatcher\Element;
 
 
 interface ElementInterface

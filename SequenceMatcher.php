@@ -1,16 +1,16 @@
 <?php
 
 
-namespace SequenceMatcher;
+namespace Ling\SequenceMatcher;
 
 
-use SequenceMatcher\Element\AlternateGroupInterface;
-use SequenceMatcher\Element\ElementInterface;
-use SequenceMatcher\Element\EntityInterface;
-use SequenceMatcher\Element\GroupInterface;
-use SequenceMatcher\Exception\EndOfModelException;
-use SequenceMatcher\Exception\EndOfSequenceException;
-use SequenceMatcher\Exception\ModelDoesNotMatchException;
+use Ling\SequenceMatcher\Element\AlternateGroupInterface;
+use Ling\SequenceMatcher\Element\ElementInterface;
+use Ling\SequenceMatcher\Element\EntityInterface;
+use Ling\SequenceMatcher\Element\GroupInterface;
+use Ling\SequenceMatcher\Exception\EndOfModelException;
+use Ling\SequenceMatcher\Exception\EndOfSequenceException;
+use Ling\SequenceMatcher\Exception\ModelDoesNotMatchException;
 
 class SequenceMatcher
 {

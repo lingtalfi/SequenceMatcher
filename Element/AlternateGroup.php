@@ -1,7 +1,7 @@
 <?php
 
 
-namespace SequenceMatcher\Element;
+namespace Ling\SequenceMatcher\Element;
 
 
 class AlternateGroup implements AlternateGroupInterface

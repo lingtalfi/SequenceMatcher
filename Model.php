@@ -1,10 +1,10 @@
 <?php
 
 
-namespace SequenceMatcher;
+namespace Ling\SequenceMatcher;
 
 
-use SequenceMatcher\Element\Group;
+use Ling\SequenceMatcher\Element\Group;
 
 class Model extends Group
 {

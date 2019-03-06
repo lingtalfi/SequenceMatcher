@@ -1,7 +1,7 @@
 <?php
 
 
-namespace SequenceMatcher\Exception;
+namespace Ling\SequenceMatcher\Exception;
 
 
 /**

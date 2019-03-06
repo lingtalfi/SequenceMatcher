@@ -1,14 +1,14 @@
 <?php
 
 
-use PhpBeast\AuthorTestAggregator;
-use PhpBeast\PrettyTestInterpreter;
-use PhpBeast\Tool\ComparisonErrorTableTool;
-use SequenceMatcher\Element\AlternateGroup;
-use SequenceMatcher\Element\CharEntity;
-use SequenceMatcher\Element\Group;
-use SequenceMatcher\Model;
-use SequenceMatcher\SequenceMatcher;
+use Ling\PhpBeast\AuthorTestAggregator;
+use Ling\PhpBeast\PrettyTestInterpreter;
+use Ling\PhpBeast\Tool\ComparisonErrorTableTool;
+use Ling\SequenceMatcher\Element\AlternateGroup;
+use Ling\SequenceMatcher\Element\CharEntity;
+use Ling\SequenceMatcher\Element\Group;
+use Ling\SequenceMatcher\Model;
+use Ling\SequenceMatcher\SequenceMatcher;
 
 
 //require_once "bigbang.php";
